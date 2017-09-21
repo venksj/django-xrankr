@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search/" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <p>Enter the search term: <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

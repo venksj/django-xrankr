@@ -1,0 +1,61 @@
+{% extends "./base_navbar.html" %}
+
+
+{% block section2 %}
+
+<!-- LOGIN FORM -->
+<div id="login-header" class="header-slider text-center" style="padding:50px 0">
+    <div id="logo" class="login">Login</div>
+    <!-- Main Form -->
+    <div class="login-form-1">
+        <form id="login-form" class="text-left" method="post" action="">
+            {% csrf_token %}
+            <div class="login-form-main-message"></div>
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" minlength=4 maxlength=20 placeholder="Password" pattern="[A-Za-z0-9]{4, 20}" required>
+                    </div>
+                    <div class="form-group login-group-checkbox etc-login-form">
+                        <input type="checkbox" id="lg_remember" name="lg_remember">
+                        <label for="lg_remember" class="sr-only-a">Remember Me</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success button"> Submit </button>
+            </div>
+            <!-- <div class="etc-login-form"> -->
+            <div class="etc-login-form">
+                <p>Forgot your password? <a href="../password">Click Here</a></p>
+                <p>New User? <a href="../register">Register Here</a></p>
+            </div>
+            <div class="etc-login-form">
+                <strong><a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a></strong>
+            </div>
+        </form>
+    </div>
+    <!-- end:Main Form -->
+</div>
+
+<!-- spacer section -->
+<section class="spacer green">
+<div class="container">
+    <div class="row"> 
+        <div class="span6 alignright flyLeft">
+            <blockquote class="large">
+                 Education is the most powerful weapon which you can use to change the world <cite>Nelson Mandela</cite> 
+            </blockquote>
+        </div>
+        <div class="span6 aligncenter flyRight">
+            <i class="icon-coffee icon-10x"></i>
+        </div>
+    </div>
+</div>
+</section>
+<!-- end spacer section -->
+
+{% endblock %}

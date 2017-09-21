@@ -1,0 +1,122 @@
+>>> from books.models import Publisher
+>>> p1 = Publisher(name='Apress', address='2855 Telegraph Avenue',
+...     city='Berkeley', state_province='CA', country='U.S.A.',
+...     website='http://www.apress.com/')
+>>> p1.save()
+
+>>> publisher_list = Publisher.objects.all()
+>>> publisher_list
+
+>>> p.name = 'GNW Independent Publishing'
+>>> p.save()
+
+## after adding def __str__:
+>>> Publisher.objects.all()
+<QuerySet [<Publisher: Apress>, <Publisher: O'Reilly>, <Publisher: GNW Independent Publishing>]>
+
+>>> Publisher.objects.filter(name='Apress')
+<QuerySet [<Publisher: Apress>]>
+same as: SELECT id, name, address, city, state_province, country, website FROM books_publisher WHERE name = 'Apress';
+
+>>> Publisher.objects.filter(country="U.S.A.", state_province="CA")
+<QuerySet [<Publisher: Apress>]>
+same as: SELECT id, name, address, city, state_province, country, website FROM books_publisher WHERE country = 'U.S.A.' AND state_province = 'CA';
+
+
+>>> Publisher.objects.filter(name__contains="press")
+<QuerySet [<Publisher: Apress>]>
+
+That’s a double underscore there between name and contains. Like Python itself, Django uses the double underscore to signal that something “magic” is happening – here, the __contains part gets translated by Django into a SQL LIKE statement:
+
+SELECT id, name, address, city, state_province, country, website FROM books_publisher WHERE name LIKE '%press%';
+
+Many other types of lookups are available, including icontains (case-insensitive LIKE), startswith and endswith, and range (SQL BETWEEN queries).
+
+
+The filter() examples above all returned a QuerySet, which you can treat like a list. Sometimes it’s more convenient to fetch only a single object, as opposed to a QuerySet. That’s what the get() method is for:
+
+>>> Publisher.objects.get(name="Apress")
+<Publisher: Apress>
+
+Instead of a QuerySet, only a single object is returned. Because of that, a query resulting in multiple objects will cause an exception:
+
+>>> Publisher.objects.get(country="U.S.A.")
+Traceback (most recent call last):
+    ...
+books.models.MultipleObjectsReturned: get() returned more than one Publisher - it returned 2!
+A query that returns no objects also causes an exception:
+
+>>> Publisher.objects.get(name="Penguin")
+Traceback (most recent call last):
+    ...
+books.models.DoesNotExist: Publisher matching query does not exist.
+
+
+try:
+    p = Publisher.objects.get(name='Apress')
+except Publisher.DoesNotExist:
+    print ("Apress isn't in the database yet.")
+else:
+    print ("Apress is in the database.")
+
+>>> Publisher.objects.order_by("name")
+<QuerySet [<Publisher: Apress>, <Publisher: GNW Independent Publishing>, <Publisher: O'Reilly>]>
+same as: SELECT id, name, address, city, state_province, country, website FROM books_publisher ORDER BY name;
+
+
+To order by multiple fields (where the second field is used to disambiguate ordering in cases where the first is the same), use multiple arguments:
+>>> Publisher.objects.order_by("state_province", "address")
+<QuerySet [<Publisher: Apress>, <Publisher: O'Reilly>, <Publisher: GNW Independent Publishing>]>
+You can also specify reverse ordering by prefixing the field name with a “-” (that’s a minus character):
+
+>>> Publisher.objects.order_by("-name")
+<QuerySet [<Publisher: O'Reilly>, <Publisher: GNW Independent Publishing>, <Publisher: Apress>]>
+
+
+>>> Publisher.objects.filter(country="U.S.A.").order_by("-name")
+<QuerySet [<Publisher: O'Reilly>, <Publisher: Apress>]>
+As you might expect, this translates to a SQL query with both a WHERE and an ORDER BY:
+   SELECT id, name, address, city, state_province, country, website FROM books_publisher WHERE country = 'U.S.A' ORDER BY name DESC;
+
+>>> Publisher.objects.order_by('name')[0]
+<Publisher: Apress>
+This translates roughly to:
+    SELECT id, name, address, city, state_province, country, website FROM books_publisher ORDER BY name LIMIT 1;
+
+
+>>> Publisher.objects.order_by('name')[0:2]
+This returns two objects, translating roughly to:
+      SELECT id, name, address, city, state_province, country, website FROM books_publisher ORDER BY name OFFSET 0 LIMIT 2;
+
+>>> Publisher.objects.filter(id=1).update(name='Apress Publishing')
+The SQL translation here is much more efficient and has no chance of race conditions:
+       UPDATE books_publisher SET name = 'Apress Publishing' WHERE id = 1;
+
+The update() method works on any QuerySet, which means you can edit multiple records in bulk. Here’s how you might change the country from 'U.S.A.' to USA in each Publisher record:
+>>> Publisher.objects.all().update(country='USA')
+3 
+
+
+
+To delete an object from your database, simply call the object’s delete() method:
+
+>>> p = Publisher.objects.get(name="O'Reilly")
+>>> p.delete()
+(1, {'books.Publisher': 1})
+>>> Publisher.objects.all()
+<QuerySet [<Publisher: Apress>, <Publisher: GNW Independent Publishing>]>
+
+
+You can also delete objects in bulk by calling delete() on the result of any QuerySet. This is similar to the update() method we showed in the last section:
+
+>>> Publisher.objects.filter(country='USA').delete()
+(1, {'books.Publisher': 1})
+>>> Publisher.objects.all().delete()
+(1, {'books.Publisher': 1})
+>>> Publisher.objects.all()
+<QuerySet []>
+
+
+To delete all records:
+>>> Publisher.objects.all().delete()
+
