@@ -18,6 +18,7 @@ class CourseProvider(models.Model):
     image = models.ImageField(max_length=255, unique=True)
     #courses = models.OneToManyField(Course, null=True, blank=True)
 
+
 class Course(models.Model):
     name = models.CharField(max_length=500, blank=True) 
     instructor = models.CharField(max_length=500, blank=True)
