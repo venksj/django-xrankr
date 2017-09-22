@@ -12,8 +12,8 @@ def hello(request):
     return HttpResponse("Hello World!!") 
 
 #######################
-def homepage(request):
-    return render(request, 'login/index.html')
+#def homepage(request):
+#    return render(request, 'login/index.html')
 #######################
 
 

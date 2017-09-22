@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>xRankr - Because education matters!</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'search/css/bootstrap-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'search/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'search/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'search/color/default.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'search/css/dashboard.css' %}" rel="stylesheet"> -->
+    <link rel="shortcut icon" href="{% static "/static/img/favicon.ico" %}">
+
+    <script src="{% static 'search/js/jquery.js' %}"></script>
+    <script src="{% static 'search/js/jquery.scrollTo.js' %}"></script>
+    <script src="{% static 'search/js/jquery.nav.js' %}"></script>
+    <script src="{% static 'search/js/jquery.localscroll-1.2.7-min.js' %}"></script>
+    <script src="{% static 'search/js/bootstrap.js' %}"></script>
+    <script src="{% static 'search/js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'search/js/isotope.js' %}"></script>
+    <script src="{% static 'search/js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'search/js/inview.js' %}"></script>
+    <script src="{% static 'search/js/animate.js' %}"></script>
+    <script src="{% static 'search/js/custom.js' %}"></script>
+    <script src="{% static 'search/js/login.js' %}"></script>
+    <script type="text/javascript">
+     $(function() {
+       $("#search").autocomplete({
+           source: "{% url 'autocomplete-view' %}",
+           minLength: 3,
+           select: function(event, ui) {
+                //window.location.href = "{% url 'course-detail' %}" + "?course_id=" + ui.item.id;
+           },
+           open: function(event, ui) {
+                //$(".ui-autocomplete").css("z-index", 1000);
+           }
+       });
+     });
+
+     $(document).ready(function(){
+           $('[data-toggle="tooltip"]').tooltip();
+     });
+    </script>
+  </head>
+
+<body>
+<!-- navbar -->
+<div class="navbar-wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Responsive navbar -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                <h1 class="brand"><a href="index.html">xRankr</a></h1>
+                <!-- navigation -->
+                <nav class="pull-right nav-collapse collapse">
+                <ul id="menu-main" class="nav">
+                    <li><a title="search" href="#search">Search</a></li>
+                    <li><a title="blog" href="/b/blog">Blog</a></li>
+                    <li><a title="team" href="#about">About</a></li> 
+                    <li><a href="/l/register">Register</a></li>
+                    <li><a href="/l/login">Login</a></li>
+                </ul>
+                </nav>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{% block slider %} {% endblock slider %}
+{% block search %} {% endblock search %}
+{% block spacer %} {% endblock spacer %}
+{% block about %} {% endblock about %}
+{% block spacer2 %} {% endblock spacer2 %}
+{% block blog %} {% endblock blog %}
+{% block footer %} {% endblock footer %}
+
+<footer>
+<div class="container">
+    <div class="row"> 
+        <div class="span6 offset3">
+            <ul class="social-networks"> <li><a href="#"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-twitter icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
+            </ul>                                                                                                                                                  <p class="copyright">
+                &copy; Maxim Theme. All rights reserved.
+                <div class="credits">
+                    <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by BootstrapMade.com 
+                </div> 
+            </p> 
+        </div> 
+    </div> 
+</div>
+</footer>
+
+<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+
+</body>
+</html>

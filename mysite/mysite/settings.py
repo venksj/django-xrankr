@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'books.apps.BooksConfig',
-    'login.apps.LoginConfig',
+    #'login.apps.LoginConfig',
     'search.apps.SearchConfig',
-    'social_django',
+    #'social_django',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +144,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+from elasticsearch import Elasticsearch, RequestsHttpConnection
+ES_CLIENT = Elasticsearch(
+    ['http://127.0.0.1:9200/'],
+    connection_class=RequestsHttpConnection
+)
+
+
+

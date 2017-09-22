@@ -1,0 +1,291 @@
+{% extends "search/base.html" %}
+
+{% block slider %} 
+<div id="login-header" class="header-slider text-center" style="padding:50px 0">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div id="main-flexslider" class="flexslider">
+					<ul class="slides">
+						<li>
+						<p class="home-slide-content">
+							<strong><font color="orange">Look up </font></strong> every course
+						</p>
+						</li>
+						<li>
+						<p class="home-slide-content">
+							Get <strong><font color="orange">genuine</font></strong> feedback
+						</p>
+						</li>
+						<li>
+						<p class="home-slide-content">
+							<strong><font color="orange"> Rate</font></strong> your experience
+						</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock slider %}
+
+
+<!-- section: search -->
+{% block search %} 
+<section id="search" class="section">
+<div class="container" style="margin-top: 8%;"> 
+ <div class="col-md-6 col-md-offset-3">
+  <div class="row">
+   <form role="form" id="form-buscar" class="form-horizontal" method="post" action="/s/search">
+    <div class="form-group">
+     <div class="input-group" data-toggle="tooltip" title="AUTOCOMPLETE">
+      <input id="1" class="form-control search-bar" type="text" name="search" placeholder="Autotcomplete Search..." required/>
+      <span class="input-group-btn">
+          <button class="btn btn-success button" type="submit"><i class="glyphicon icon-search" aria-hidden="true"></i> Search </button>
+      </span>
+     </div>
+    <div>
+   </form>
+  </div>            
+ </div>
+<div>
+</section>
+{% endblock search %}
+<!-- end section: search -->
+
+<!-- spacer section -->
+{% block spacer %} 
+<section class="spacer green">
+<div class="container">
+	<div class="row">
+		<div class="span6 alignright flyLeft">
+			<blockquote class="large">
+				 Education is the most powerful weapon which you can use to change the world <cite>Nelson Mandela</cite>
+			</blockquote>
+		</div>
+		<div class="span6 aligncenter flyRight">
+			<i class="icon-coffee icon-10x"></i>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock spacer %}
+<!-- end spacer section -->
+
+<!-- section: about -->
+{% block about %}
+<section id="about" class="section">
+<div class="container">
+	<h4>Why xRankr</h4>
+	<div class="row">
+		<div class="span4 offset1">
+			<div>
+				<h2>We live with <strong>creativity</strong></h2>
+				<p>
+					Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.
+				</p>
+			</div>
+		</div>
+		<div class="span6">
+			<div class="aligncenter">
+				<img src="img/icons/creativity.png" alt="" />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2 offset1 flyIn">
+			<div class="people">
+				<img class="team-thumb img-circle" src="img/team/img-1.jpg" alt="" />
+				<h3>John Doe</h3>
+				<p>
+					Art director
+				</p>
+			</div>
+		</div>
+		<div class="span2 flyIn">
+			<div class="people">
+				<img class="team-thumb img-circle" src="img/team/img-2.jpg" alt="" />
+				<h3>Mike Doe</h3>
+				<p>
+					Web developer
+				</p>
+			</div>
+		</div>
+		<div class="span2 flyIn">
+			<div class="people">
+				<img class="team-thumb img-circle" src="img/team/img-3.jpg" alt="" />
+				<h3>Neil Doe</h3>
+				<p>
+					Web designer
+				</p>
+			</div>
+		</div>
+		<div class="span2 flyIn">
+			<div class="people">
+				<img class="team-thumb img-circle" src="img/team/img-4.jpg" alt="" />
+				<h3>Mark Joe</h3>
+				<p>
+					UI designer
+				</p>
+			</div>
+		</div>
+		<div class="span2 flyIn">
+			<div class="people">
+				<img class="team-thumb img-circle" src="img/team/img-5.jpg" alt="" />
+				<h3>Stephen B</h3>
+				<p>
+					Digital imaging
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container -->
+</section>
+{% endblock about %}
+<!-- end section: about -->
+
+
+<!-- spacer section -->
+{% block spacer2 %} 
+<section class="spacer bg3">
+<div class="container">
+	<div class="row">
+		<div class="span12 aligncenter flyLeft">
+			<blockquote class="large">
+				 We are an established and trusted web agency with a reputation for commitment and high integrity
+			</blockquote>
+		</div>
+		<div class="span12 aligncenter flyRight">
+			<i class="icon-rocket icon-10x"></i>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock spacer2 %}
+<!-- end spacer section -->
+
+<!-- section: blog -->
+{% block blog %}
+<section id="blog" class="section">
+<div class="container">
+	<h4>Our Blog</h4>
+	<!-- Three columns -->
+	<div class="row">
+		<div class="span3">
+			<div class="home-post">
+				<div class="post-image">
+					<img class="max-img" src="img/blog/img1.jpg" alt="" />
+				</div>
+				<div class="post-meta">
+					<i class="icon-file icon-2x"></i>
+					<span class="date">June 19, 2013</span>
+					<span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
+				</div>
+				<div class="entry-content">
+					<h5><strong><a href="#">New design trends</a></strong></h5>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+					</p>
+					<a href="#" class="more">Read more</a>
+				</div>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="home-post">
+				<div class="post-image">
+					<img class="max-img" src="img/blog/img2.jpg" alt="" />
+				</div>
+				<div class="post-meta">
+					<i class="icon-file icon-2x"></i>
+					<span class="date">June 19, 2013</span>
+					<span class="tags"><a href="#">Design</a>, <a href="#">News</a></span>
+				</div>
+				<div class="entry-content">
+					<h5><strong><a href="#">Retro is great</a></strong></h5>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+					</p>
+					<a href="#" class="more">Read more</a>
+				</div>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="home-post">
+				<div class="post-image">
+					<img class="max-img" src="img/blog/img3.jpg" alt="" />
+				</div>
+				<div class="post-meta">
+					<i class="icon-file icon-2x"></i>
+					<span class="date">June 22, 2013</span>
+					<span class="tags"><a href="#">Design</a>, <a href="#">Tips</a></span>
+				</div>
+				<div class="entry-content">
+					<h5><strong><a href="#">Isometric mockup</a></strong></h5>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+					</p>
+					<a href="#" class="more">Read more</a>
+				</div>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="home-post">
+				<div class="post-image">
+					<img class="max-img" src="img/blog/img4.jpg" alt="" />
+				</div>
+				<div class="post-meta">
+					<i class="icon-file icon-2x"></i>
+					<span class="date">June 27, 2013</span>
+					<span class="tags"><a href="#">News</a>, <a href="#">Tutorial</a></span>
+				</div>
+				<div class="entry-content">
+					<h5><strong><a href="#">Free icon set</a></strong></h5>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+					</p>
+					<a href="#" class="more">Read more</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blankdivider30"></div>
+	<div class="aligncenter">
+		<a href="#" class="btn btn-large btn-theme">More blog post</a>
+	</div>
+</div>
+</section> 
+{% endblock blog %}
+
+
+{% block footer %}
+<footer>
+<div class="container">
+	<div class="row">
+		<div class="span6 offset3">
+			<ul class="social-networks">
+				<li><a href="#"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a></li>
+				<li><a href="#"><i class="icon-circled icon-bgdark icon-twitter icon-2x"></i></a></li>
+				<li><a href="#"><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
+				<li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
+			</ul>
+			<p class="copyright">
+				&copy; Maxim Theme. All rights reserved.
+                <div class="credits">
+                    <!--
+                        All the links in the footer should remain intact.
+                        You can delete the links only if you purchased the pro version.
+                        Licensing information: https://bootstrapmade.com/license/
+                        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Maxim
+                    -->
+                    <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by BootstrapMade.com
+                </div>
+			</p>
+		</div>
+	</div>
+</div>
+<!-- ./container -->
+</footer>
+{% endblock footer %}
+

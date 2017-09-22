@@ -16,20 +16,21 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 #################################################
-from mysite.views import hello
-from mysite.views import homepage
-from mysite.views import current_datetime
-from mysite.views import hours_ahead
+#from mysite.views import hello
+#from mysite.views import homepage
+#from mysite.views import current_datetime
+#from mysite.views import hours_ahead
 #################################################
+from search import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', homepage),
-    url(r'^hello/$', hello),
-    url(r'^gettime/$', current_datetime),
-    url(r'^gettime/plus/(\d{1,2})/$', hours_ahead),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
-    url(r'^l/', include('login.urls')),
+    url(r'^$', views.homepage),
+    #url(r'^hello/$', hello),
+    #url(r'^gettime/$', current_datetime),
+    #url(r'^gettime/plus/(\d{1,2})/$', hours_ahead),
+    #url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
+    #url(r'^l/', include('login.urls')),
     url(r'^s/', include('search.urls')),
 ]
